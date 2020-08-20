@@ -5,14 +5,19 @@ public class PasswordStrengthMeter {
         if (s == null || s.isEmpty()) {
             return PasswordStrength.INVALID;
         }
-        if (s.length() < 8) {
+        boolean lengthEnough = s.length() >= 8;
+        boolean containsNumber = meetsContainNumber(s);
+        boolean containsUpperCase = meetsContainUppercase(s);
+
+        if (lengthEnough && !containsNumber && !containsUpperCase) {
+            return PasswordStrength.WEAK;
+        }
+        if (!lengthEnough) {
             return PasswordStrength.NORMAL;
         }
-        boolean containsNumber = meetsContainNumber(s);
         if (!containsNumber) {
             return PasswordStrength.NORMAL;
         }
-        boolean containsUpperCase = meetsContainUppercase(s);
         if (!containsUpperCase) {
             return PasswordStrength.NORMAL;
         }

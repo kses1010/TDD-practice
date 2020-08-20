@@ -50,4 +50,10 @@ class PasswordStrengthMeterTest {
     void meetsOtherCriteria_except_for_Uppercase() {
         assertStrength(PasswordStrength.NORMAL, "ab12!@df");
     }
+
+    @Test
+    @DisplayName("길이가 8글자 이상인 조건만 충족이면 약함")
+    void meetsOnlyLengthCriteria() {
+        assertStrength(PasswordStrength.WEAK, "abcdefgh");
+    }
 }
