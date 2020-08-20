@@ -5,16 +5,19 @@ public class PasswordStrengthMeter {
         if (s.length() < 8) {
             return PasswordStrength.NORMAL;
         }
-        boolean containsNumber = false;
-        for (char ch : s.toCharArray()) {
-            if (ch >= '0' && ch <= '9') {
-                containsNumber = true;
-                break;
-            }
-        }
+        boolean containsNumber = meetsContainNumber(s);
         if (!containsNumber) {
             return PasswordStrength.NORMAL;
         }
         return PasswordStrength.STRONG;
+    }
+
+    private boolean meetsContainNumber(String s) {
+        for (char ch : s.toCharArray()) {
+            if (ch >= '0' && ch <= '9') {
+                return false;
+            }
+        }
+        return false;
     }
 }
