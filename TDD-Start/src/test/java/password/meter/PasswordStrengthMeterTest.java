@@ -24,7 +24,7 @@ class PasswordStrengthMeterTest {
     @DisplayName("길이8글자 미만 나머지조건 충족이면 보통")
     void meetsOtherCriteria_except_for_Length() {
         assertStrength(PasswordStrength.NORMAL, "ab12!@A");
-        assertStrength(PasswordStrength.NORMAL, "ab12!@");
+        assertStrength(PasswordStrength.NORMAL, "ab12B@");
     }
 
     @Test
