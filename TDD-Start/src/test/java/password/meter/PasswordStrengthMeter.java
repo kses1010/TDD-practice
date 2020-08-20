@@ -15,7 +15,7 @@ public class PasswordStrengthMeter {
     private boolean meetsContainNumber(String s) {
         for (char ch : s.toCharArray()) {
             if (ch >= '0' && ch <= '9') {
-                return false;
+                return true;
             }
         }
         return false;
