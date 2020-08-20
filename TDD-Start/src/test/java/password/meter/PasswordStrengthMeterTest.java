@@ -17,12 +17,20 @@ class PasswordStrengthMeterTest {
 
     @Test
     @DisplayName("길이8글자 미만 나머지조건 충족이면 보통")
-    void meetsOtherCriteria() {
+    void meetsOtherCriteria_except_for_Length() {
         PasswordStrengthMeter meter = new PasswordStrengthMeter();
         PasswordStrength result = meter.meter("ab12!@A");
         PasswordStrength result2 = meter.meter("ab12!@");
 
         assertEquals(PasswordStrength.NORMAL, result);
         assertEquals(PasswordStrength.NORMAL, result2);
+    }
+
+    @Test
+    @DisplayName("숫자포함하지 않고 나머지조건 충족이면 보통")
+    void meetsOtherCriteria_except_for_number() {
+        PasswordStrengthMeter meter = new PasswordStrengthMeter();
+        PasswordStrength result = meter.meter("ab!@ABqwer");
+        assertEquals(PasswordStrength.NORMAL, result);
     }
 }
