@@ -68,4 +68,10 @@ class PasswordStrengthMeterTest {
     void meetsOnlyUpperCriteria() {
         assertStrength(PasswordStrength.WEAK, "ABCDE");
     }
+
+    @Test
+    @DisplayName("아무 조건 충족하지 않으면 약함")
+    void meetsNoCriteria() {
+        assertStrength(PasswordStrength.WEAK, "abc");
+    }
 }
