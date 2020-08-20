@@ -1,5 +1,5 @@
 package password.meter;
 
 public enum PasswordStrength {
-    STRONG, NORMAL
+    STRONG, NORMAL, INVALID
 }

@@ -16,7 +16,6 @@ class PasswordStrengthMeterTest {
     @Test
     @DisplayName("모든 조건 충족이면 강함")
     void meetsAllCriteria() {
-
         assertStrength(PasswordStrength.STRONG, "ab12!@ABC");
     }
 
@@ -32,5 +31,17 @@ class PasswordStrengthMeterTest {
     @DisplayName("숫자포함하지 않고 나머지조건 충족이면 보통")
     void meetsOtherCriteria_except_for_number() {
         assertStrength(PasswordStrength.NORMAL, "ab!@ABqwer");
+    }
+
+    @Test
+    @DisplayName("null이면 INVALID 리턴")
+    void nullInput_Then_Invalid() {
+        assertStrength(PasswordStrength.INVALID, null);
+    }
+
+    @Test
+    @DisplayName("빈 문자열이면 INVALID 리턴")
+    void emptyInput_Then_Invalid() {
+        assertStrength(PasswordStrength.INVALID, "");
     }
 }
