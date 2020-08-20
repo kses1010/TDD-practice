@@ -56,4 +56,10 @@ class PasswordStrengthMeterTest {
     void meetsOnlyLengthCriteria() {
         assertStrength(PasswordStrength.WEAK, "abcdefgh");
     }
+
+    @Test
+    @DisplayName("숫자포함 조건만 충족이면 약함")
+    void meetsOnlyNumberCriteria() {
+        assertStrength(PasswordStrength.WEAK, "12345");
+    }
 }
